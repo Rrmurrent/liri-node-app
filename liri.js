@@ -3,15 +3,16 @@ var keys = require('./keys.js');
 var axios = require('axios');
 var SpotifyAPI = require('node-spotify-api');
 var moment = require('moment');
-var fs = require('./random.txt');
+// var fs = require('./random.txt');
 
 var input = process.argv[2];
 var input2 = process.argv[3];
-var searchTerm = process.argv.splice(3).join(" ");
+// var searchTerm = process.argv.splice(3).join(" ");
 
 
 
 //Spotify Function
+
 
 var spotifyFxn = function(){
     var clientId = process.env.SPOTIFY_ID;
@@ -35,12 +36,14 @@ var spotifyFxn = function(){
                         'prvURL': info[i].preview_url,
                         'album': info[i].album.name,
                     };
-                    
+                    console.log('---------------------------');
+
                     console.log('Song Title: ' + results.song);
                     console.log('Album Title: ' + results.album);
                     console.log('Artist: ' + results.artist);
                     console.log('Preview: ' + results.prvURL);
-
+                    
+                    console.log('---------------------------');
                 };
             };
         }
@@ -49,7 +52,6 @@ var spotifyFxn = function(){
         }
     });
 };
-
 
 //Band is in Town function
 function concertThis(){
@@ -166,6 +168,7 @@ var decider = function(){
         console.log('example: \nnode liri.js \'spotify-this-song\' \'I want it that way\'');
     }
 };
+
 //Start the process
 decider();
 
